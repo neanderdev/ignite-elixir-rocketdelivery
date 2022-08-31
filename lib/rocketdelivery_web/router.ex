@@ -1,8 +1,11 @@
 defmodule RocketdeliveryWeb.Router do
   use RocketdeliveryWeb, :router
 
+  alias RocketdeliveryWeb.Plugs.UUIDChecker
+
   pipeline :api do
     plug :accepts, ["json"]
+    plug UUIDChecker
   end
 
   scope "/api", RocketdeliveryWeb do
