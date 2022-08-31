@@ -10,5 +10,5 @@ defmodule RocketdeliveryWeb.UsersView do
     }
   end
 
-  def render("show.json", %{user: %User{} = user}), do: %{user: user}
+  def render("user.json", %{user: %User{} = user}), do: %{user: user}
 end
