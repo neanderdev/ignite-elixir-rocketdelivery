@@ -1,20 +1,14 @@
 defmodule Rocketdelivery.UserTest do
   use Rocketdelivery.DataCase, async: true
 
+  import Rocketdelivery.Factory
+
   alias Ecto.Changeset
   alias Rocketdelivery.User
 
   describe "changeset/2" do
     test "when all params are valid, returns a valid changeset" do
-      params = %{
-        address: "Av Teste, 11 - Centro",
-        age: 18,
-        cep: "12345678",
-        cpf: "12345678910",
-        email: "email@email.com",
-        password: "123456",
-        name: "Neander"
-      }
+      params = build(:user_params)
 
       response = User.changeset(params)
 
@@ -22,15 +16,7 @@ defmodule Rocketdelivery.UserTest do
     end
 
     test "when updating a changeset, returns a valid changeset with the given changes" do
-      params = %{
-        address: "Av Teste, 11 - Centro",
-        age: 18,
-        cep: "12345678",
-        cpf: "12345678910",
-        email: "email@email.com",
-        password: "123456",
-        name: "Neander"
-      }
+      params = build(:user_params)
 
       update_params = %{name: "Name Teste", password: "123456"}
 
@@ -43,15 +29,7 @@ defmodule Rocketdelivery.UserTest do
     end
 
     test "when there are some error, returns an invalid changeset" do
-      params = %{
-        address: "Av Teste, 11 - Centro",
-        age: 12,
-        cep: "12345678",
-        cpf: "12345678910",
-        email: "email@email.com",
-        password: "123",
-        name: "Neander"
-      }
+      params = build(:user_params, %{age: 13, password: "123"})
 
       response = User.changeset(params)
 
