@@ -11,7 +11,7 @@ defmodule Rocketdelivery.Order do
   @required_params [:address, :comments, :payment_method, :user_id]
   @payment_method [:money, :debit_card, :credit_card, :pix]
 
-  @derive {Jason.Encoder, only: @required_params ++ [:id]}
+  @derive {Jason.Encoder, only: @required_params ++ [:id, :items]}
 
   schema "orders" do
     field :address, :string
