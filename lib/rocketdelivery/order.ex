@@ -6,6 +6,7 @@ defmodule Rocketdelivery.Order do
   alias Rocketdelivery.{Item, User}
 
   @primary_key {:id, :binary_id, autogenerate: true}
+  @foreign_key_type :binary_id
 
   @required_params [:address, :comments, :payment_method, :user_id]
   @payment_method [:money, :debit_card, :credit_card, :pix]
