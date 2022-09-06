@@ -2,7 +2,9 @@ defmodule Rocketdelivery.Users.Create do
   alias Rocketdelivery.{Error, Repo, User}
   alias Rocketdelivery.ViaCep.Client
 
-  def call(%{"cep" => cep} = params) do
+  def call(params) do
+    cep = Map.get(params, "cep")
+
     changeset = User.changeset(params)
 
     with {:ok, %User{} = _user} <- User.build(changeset),
