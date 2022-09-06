@@ -14,7 +14,6 @@ defmodule Rocketdelivery.ViaCep.Client do
   end
 
   defp handle_get({:ok, %Env{status: 200, body: %{"erro" => "true"}}}) do
-    IO.inspect("aqui")
     {:error, Error.build(:not_found, "CEP not found!")}
   end
 
