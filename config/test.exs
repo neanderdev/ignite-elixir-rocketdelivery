@@ -13,6 +13,9 @@ config :rocketdelivery, Rocketdelivery.Repo,
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 
+config :rocketdelivery, Rocketdelivery.Users.Create,
+  via_cep_adapter: Rocketdelivery.ViaCep.ClientMock
+
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :rocketdelivery, RocketdeliveryWeb.Endpoint,

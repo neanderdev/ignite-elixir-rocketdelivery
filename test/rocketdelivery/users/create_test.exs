@@ -1,14 +1,32 @@
 defmodule Rocketdelivery.Users.CreateTest do
   use Rocketdelivery.DataCase, async: true
 
+  import Mox
   import Rocketdelivery.Factory
 
   alias Rocketdelivery.{Error, User}
   alias Rocketdelivery.Users.Create
+  alias Rocketdelivery.ViaCep.ClientMock
 
   describe "call/1" do
     test "when all params are valid, returns the user" do
       params = build(:user_params)
+
+      expect(ClientMock, :get_cep_info, fn _cep ->
+        {:ok,
+         %{
+           "bairro" => "",
+           "cep" => "14790-000",
+           "complemento" => "",
+           "ddd" => "17",
+           "gia" => "3220",
+           "ibge" => "3517406",
+           "localidade" => "Guaíra",
+           "logradouro" => "",
+           "siafi" => "6449",
+           "uf" => "SP"
+         }}
+      end)
 
       response = Create.call(params)
 
