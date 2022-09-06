@@ -13,19 +13,7 @@ defmodule Rocketdelivery.Users.CreateTest do
       params = build(:user_params)
 
       expect(ClientMock, :get_cep_info, fn _cep ->
-        {:ok,
-         %{
-           "bairro" => "",
-           "cep" => "14790-000",
-           "complemento" => "",
-           "ddd" => "17",
-           "gia" => "3220",
-           "ibge" => "3517406",
-           "localidade" => "Guaíra",
-           "logradouro" => "",
-           "siafi" => "6449",
-           "uf" => "SP"
-         }}
+        {:ok, build(:cep_info)}
       end)
 
       response = Create.call(params)

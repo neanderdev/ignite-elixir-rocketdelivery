@@ -17,6 +17,8 @@ defmodule Rocketdelivery.Users.Create do
   end
 
   defp client do
-    Application.fetch_env!(:rocketdelivery, __MODULE__)[:via_cep_adapter]
+    :rocketdelivery
+    |> Application.fetch_env!(__MODULE__)
+    |> Keyword.get(:via_cep_adapter)
   end
 end
