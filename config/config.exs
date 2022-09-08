@@ -16,6 +16,10 @@ config :rocketdelivery, RocketdeliveryWeb.Auth.Guardian,
   issuer: "rocketdelivery",
   secret_key: "u/m64Hf12k49AclvP+yRFL2nhlV9zNIvYpp+TuCS9VJdqa6IPCv1sNHb45R2TCxN"
 
+config :rocketdelivery, RocketdeliveryWeb.Auth.Pipeline,
+  module: RocketdeliveryWeb.Auth.Guardian,
+  error_handler: RocketdeliveryWeb.Auth.AuthErrorHandler
+
 config :rocketdelivery, Rocketdelivery.Repo,
   migration_primary_key: [type: :binary_id],
   migration_foreign_key: [type: :binary_id]
