@@ -2,15 +2,16 @@ defmodule RocketdeliveryWeb.UsersController do
   use RocketdeliveryWeb, :controller
 
   alias Rocketdelivery.User
-  alias RocketdeliveryWeb.FallbackController
+  alias RocketdeliveryWeb.{Auth.Guardian, FallbackController}
 
   action_fallback FallbackController
 
   def create(conn, params) do
-    with {:ok, %User{} = user} <- Rocketdelivery.create_user(params) do
+    with {:ok, %User{} = user} <- Rocketdelivery.create_user(params),
+         {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
       conn
       |> put_status(:created)
-      |> render("create.json", user: user)
+      |> render("create.json", token: token, user: user)
     end
   end
 
