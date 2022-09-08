@@ -15,6 +15,8 @@ defmodule Rocketdelivery.Orders.ReportRunner do
 
   @impl true
   def init(stack) do
+    Logger.info("Report Runner started")
+
     schedule_report_generation()
 
     {:ok, stack}
