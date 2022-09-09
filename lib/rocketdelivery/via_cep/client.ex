@@ -1,9 +1,9 @@
 defmodule Rocketdelivery.ViaCep.Client do
   use Tesla
 
-  alias Tesla.Env
   alias Rocketdelivery.Error
   alias Rocketdelivery.ViaCep.Behaviour
+  alias Tesla.Env
 
   @behaviour Behaviour
 
