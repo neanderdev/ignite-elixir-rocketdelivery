@@ -13,6 +13,13 @@ config :rocketdelivery, Rocketdelivery.Repo,
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 
+# Configure the database for GitHub Actions
+if System.get_env("GITHUB_ACTIONS") do
+  config :rocketdelivery, Rocketdelivery.Repo,
+    username: "postgres",
+    password: "postgres"
+end
+
 config :rocketdelivery, Rocketdelivery.Users.Create,
   via_cep_adapter: Rocketdelivery.ViaCep.ClientMock
 
