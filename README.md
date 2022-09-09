@@ -1,5 +1,7 @@
 # Rocketdelivery
 
+[![codecov](https://codecov.io/gh/neanderdev/ignite-elixir-rocketdelivery/branch/main/graph/badge.svg?token=OXN49Z3LBB)](https://codecov.io/gh/neanderdev/ignite-elixir-rocketdelivery)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
